@@ -24,7 +24,7 @@ video {
 }
 
 .holder {
-  z-index: 1;
+  z-index: 10;
   background-color: transparent;
   min-width: 100%;
   min-height: 100%;
@@ -84,6 +84,29 @@ a-scene {
   padding: 0px 10%;
 }
 
+.overlay {
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 8px;
+  position: absolute;
+}
+
+.overlay-image {
+  width: 100%;
+}
+
+.overlay-container {
+  min-width: 280px;
+  max-width: 60%;
+}
+
 .robot {
   margin-right: 16px;
 }
@@ -106,10 +129,19 @@ a-scene {
 }
 
 .guide-bubble::before {
-  content: url(bubble-arrow.svg);
+  content: url(https://raw.githubusercontent.com/arexamples/ar/master/bubble-arrow.svg);
   top: 2px;
   left: -9px;
   position: absolute;
+}
+
+.map-button button {
+  width: unset;
+  padding: 0px 24px;
+}
+
+.map-button img {
+  margin-left: 10px;
 }
 
 @keyframes fadeIn {
@@ -133,7 +165,9 @@ a-scene {
 /* to disable landscape mode */
 
 @media screen and (orientation: landscape) {
-  .holder {
+  .holder,
+  .overlay,
+  #myEmbeddedScene {
     transform: rotate(-90deg);
     transform-origin: left top;
     min-width: unset;
@@ -186,6 +220,9 @@ a-scene {
   .guide-bubble::before {
     left: -13px;
   }
+  .map-button img {
+    width: 18px;
+  }
 }
 
 @media screen and (min-width: 1000px) {
@@ -213,5 +250,9 @@ a-scene {
   }
   .guide-bubble::before {
     left: -16px;
+  }
+  .map-button img {
+    margin-left: 14px;
+    width: 22px;
   }
 }
